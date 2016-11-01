@@ -1,16 +1,22 @@
 ﻿
-@model string[]
+@*@model string[]*@
 @{
     ViewBag.Title = "List";
-    //var newsList = ViewBag.data as string[];
+    var newList = ViewBage.data as string[];
     //var newsList = ViewData["data"] as string[];
+
+    var curpage = (int)ViewBag.Page;
+
+    var start = curpage - 3;
+
 }
 
 <h2>List</h2>
 
+<h3>   第 @ViewBag.Page 页 </h3>
 
 <ol>
-    @foreach (var item in Model)
+    @foreach (var item in newList)
     {
         <li>@item </li>
     }
@@ -19,8 +25,19 @@
 
 
 <ol>
-    @for (int i = 0; i < Model.Length; i++)
+    @for (int i = 0; i < newList.Length; i++)
     {
-        <li>@Model[i]  </li>
+        <li>@newList[i]  </li>
+    }
+</ol>
+
+
+<ol>
+    @for (int i = start; i < curpage + 3; i++)
+    {
+        <li>
+            @*<a href="/Home/List?page=@i">第 @i 页</a>*@
+            @Html.ActionLink(string.Format("第{0}页", i), "List", "Home", new { page = i }, null)
+        </li>
     }
 </ol>

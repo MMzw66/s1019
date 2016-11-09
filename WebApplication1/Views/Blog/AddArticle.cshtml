@@ -1,4 +1,4 @@
-﻿@Model BlogArticle
+﻿@model BlogArticle
 @{
     ViewBag.Title = "AddArticle";
 }
@@ -13,7 +13,7 @@
         <tr>
             <td>标题：</td>
             <td>
-                @Html.TextBoxFor(o => o.Subject)
+                @Html.TextBoxFor(o =>o.Subject)
                 @Html.ValidationMessageFor(o => o.Subject)
             </td>
         </tr>

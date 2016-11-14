@@ -29,5 +29,22 @@ namespace WebApplication1.Controllers
             ViewBag.count = count;
             return View();
         }
+
+
+        public ActionResult Login()
+        {
+            return View();
+        }
+
+        public ActionResult PostLogin(string username, string password)
+        {
+            if (username == "abcd" && password == "1234")
+            {
+                var cookie = new HttpCookie("isauth", "true");
+                Response.Cookies.Add(cookie);
+                return RedirectToAction("AddArticle", "Blog");
+            }
+            return View();
+        }
     }
 }
